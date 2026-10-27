@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de Programación y Matemáticas</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #bdc3c7;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            flex: 1;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 5px solid #3498db;
+        }
+
+        .card h2 {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+
+        .desc, .algo {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 0.8rem;
+        }
+
+        .desc span, .algo span {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        form {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            border: 1px solid #e9ecef;
+        }
+
+        .form-group {
+            margin-bottom: 0.8rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            padding: 0.5rem;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .resultado {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            background-color: #e8f4f8;
+            border-radius: 4px;
+            color: #1a5276;
+            font-weight: 600;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 1.2rem;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Ejercicios de Programación y Matemáticas</h1>
+        <p>Práctica de Ejercicios (12, 13) y Selección de "El Hombre que Calculaba"</p>
+    </header>
+
+    <main>
+
+        <!-- EJERCICIO 12 -->
+        <div class="card">
+            <h2>Ejercicio 12: Raíces de una Ecuación Cuadrática</h2>
+            <p class="desc"><span>Descripción del Capítulo / Enunciado:</span> Determina las raíces reales de una ecuación cuadrática de la forma ax² + bx + c = 0 calculando el discriminante D = b² - 4ac. Muestra mensajes específicos según si D > 0, D = 0 o D &lt; 0.</p>
+            <p class="algo"><span>Algoritmo:</span> 1. Leer los coeficientes a, b y c. 2. Calcular el discriminante D = b² - 4ac. 3. Evaluar condiciones: si D > 0 calcular dos raíces reales; si D = 0 calcular una raíz única; si D &lt; 0 indicar que no hay raíces reales.</p>
+            
+            <form id="form12">
+                <div class="form-group">
+                    <label for="valA">Entrada de datos - Coeficiente a:</label>
+                    <input type="number" id="valA" value="3" step="any" required>
+                </div>
+                <div class="form-group">
+                    <label for="valB">Coeficiente b:</label>
+                    <input type="number" id="valB" value="-6" step="any" required>
+                </div>
+                <div class="form-group">
+                    <label for="valC">Coeficiente c:</label>
+                    <input type="number" id="valC" value="3" step="any" required>
+                </div>
+                <button type="button" onclick="calcularEj12()">Calcular Raíces</button>
+                <div class="resultado" id="res12">Salida de datos: Ingrese los coeficientes y presione calcular.</div>
+            </form>
+        </div>
+
+        <!-- EJERCICIO 13 -->
+        <div class="card">
+            <h2>Ejercicio 13: Estimación del valor de Pi por Series</h2>
+            <p class="desc"><span>Descripción del Capítulo / Enunciado:</span> Estimar el valor de pi mediante la serie π = √(6 * Σ (1 / n²)) utilizando un bucle con un número determinado de términos N, comparando el resultado con el valor real de pi.</p>
+            <p class="algo"><span>Algoritmo:</span> 1. Leer el número de términos N. 2. Inicializar la suma en 0. 3. Mediante un bucle de n=1 hasta N, sumar 1 / (n * n). 4. Multiplicar la suma total por 6, extraer su raíz cuadrada y comparar con el valor real de pi.</p>
+            
+            <form id="form13">
+                <div class="form-group">
+                    <label for="valN">Entrada de datos - Número de términos (N):</label>
+                    <input type="number" id="valN" value="100" min="1" required>
+                </div>
+                <button type="button" onclick="calcularEj13()">Estimar Pi</button>
+                <div class="resultado" id="res13">Salida de datos: Ingrese N y presione calcular.</div>
+            </form>
+        </div>
+
+        <!-- EJERCICIO 3 (LIBRO) -->
+        <div class="card">
+            <h2>Ejercicio 3 (Libro): El Reparto de los 35 Camellos (Capítulo III)</h2>
+            <p class="desc"><span>Descripción del Capítulo:</span> Beremiz Samir resuelve un conflicto entre tres hermanos que no lograban dividirse una herencia de 35 camellos según los deseos de su padre (1/2, 1/3 y 1/9). Beremiz añade su propio camello para realizar la división exacta.</p>
+            <p class="algo"><span>Algoritmo:</span> 1. Leer el total de camellos. 2. Sumar 1 camello auxiliar. 3. Calcular las porciones correspondientes dividiendo el nuevo total entre 2, 3 y 9. 4. Obtener el camello sobrante para Beremiz.</p>
+            
+            <form id="formLibro1">
+                <div class="form-group">
+                    <label for="camellos">Entrada de datos - Número de camellos:</label>
+                    <input type="number" id="camellos" value="35" required>
+                </div>
+                <button type="button" onclick="calcularCamellos()">Calcular Reparto</button>
+                <div class="resultado" id="resLibro1">Salida de datos: Ingrese los datos y presione calcular.</div>
+            </form>
+        </div>
+
+        <!-- EJERCICIO 6 (LIBRO) -->
+        <div class="card">
+            <h2>Ejercicio 6 (Libro): El Pago de los Panes Compartidos (Capítulo VI)</h2>
+            <p class="desc"><span>Descripción del Capítulo:</span> Dos viajeros comparten sus alimentos (5 panes y 3 panes) con un forastero. Al dejar 8 monedas de oro como pago, Beremiz demuestra que el dinero debe dividirse en proporción exacta al pan cedido.</p>
+            <p class="algo"><span>Algoritmo:</span> 1. Leer panes aportados y monedas de oro. 2. Calcular el consumo por persona (Total panes / 3). 3. Restar el consumo personal de los panes aportados para obtener la contribución neta. 4. Distribuir las monedas proporcionalmente.</p>
+            
+            <form id="formLibro2">
+                <div class="form-group">
+                    <label for="panesA">Panes del primer viajero:</label>
+                    <input type="number" id="panesA" value="5" required>
+                </div>
+                <div class="form-group">
+                    <label for="panesB">Panes del segundo viajero:</label>
+                    <input type="number" id="panesB" value="3" required>
+                </div>
+                <div class="form-group">
+                    <label for="monedas">Monedas de oro pagadas:</label>
+                    <input type="number" id="monedas" value="8" required>
+                </div>
+                <button type="button" onclick="calcularPanes()">Calcular Pago</button>
+                <div class="resultado" id="resLibro2">Salida de datos: Ingrese los datos y presione calcular.</div>
+            </form>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Tarea de Programación y Matemáticas | Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        // Lógica Ejercicio 12
+        function calcularEj12() {
+            let a = parseFloat(document.getElementById("valA").value);
+            let b = parseFloat(document.getElementById("valB").value);
+            let c = parseFloat(document.getElementById("valC").value);
+
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                document.getElementById("res12").innerText = "Por favor, ingrese valores numéricos válidos.";
+                return;
+            }
+
+            let D = (b * b) - (4 * a * c);
+            let mensaje = "Discriminante D = " + D.toFixed(0) + "<br>";
+
+            if (D > 0) {
+                let x1 = (-b + Math.sqrt(D)) / (2 * a);
+                let x2 = (-b - Math.sqrt(D)) / (2 * a);
+                mensaje += "The equation has two roots,<br>Raíces: x1 = " + x1.toFixed(0) + ", x2 = " + x2.toFixed(0);
+            } else if (D === 0) {
+                let x = -b / (2 * a);
+                mensaje += "The equation has one root,<br>Raíz única: x = " + x.toFixed(0);
+            } else {
+                mensaje += "The equation has no real roots.";
+            }
+
+            document.getElementById("res12").innerHTML = mensaje;
+        }
+
+        // Lógica Ejercicio 13
+        function calcularEj13() {
+            let N = parseInt(document.getElementById("valN").value);
+
+            if (isNaN(N) || N <= 0) {
+                document.getElementById("res13").innerText = "Ingrese un valor válido para N mayor que 0.";
+                return;
+            }
+
+            let suma = 0;
+            for (let n = 1; n <= N; n++) {
+                suma += 1 / (n * n);
+            }
+
+            let piEstimado = Math.sqrt(6 * suma);
+            let diferencia = Math.abs(piEstimado - Math.PI);
+
+            document.getElementById("res13").innerHTML = 
+                "• Valor estimado de Pi (N = " + N + "): <strong>" + piEstimado.toFixed(0) + "</strong><br>" +
+                "• Valor real de Math.PI: " + Math.PI.toFixed(0) + "<br>" +
+                "• Diferencia absoluta: " + diferencia.toFixed(0);
+        }
+
+        // Lógica Ejercicio 3 (Libro)
+        function calcularCamellos() {
+            let total = parseInt(document.getElementById("camellos").value);
+            
+            if (isNaN(total) || total <= 0) {
+                document.getElementById("resLibro1").innerText = "Ingrese un número válido de camellos.";
+                return;
+            }
+
+            let ajustado = total + 1;
+            let h1 = ajustado / 2;
+            let h2 = ajustado / 3;
+            let h3 = ajustado / 9;
+            let sobrante = ajustado - (h1 + h2 + h3);
+
+            document.getElementById("resLibro1").innerHTML = 
+                "Con " + ajustado + " camellos (añadiendo 1 auxiliar):<br>" +
+                "• Hermano 1 (1/2): " + h1.toFixed(0) + " camellos<br>" +
+                "• Hermano 2 (1/3): " + h2.toFixed(0) + " camellos<br>" +
+                "• Hermano 3 (1/9): " + h3.toFixed(0) + " camellos<br>" +
+                "• Sobrante para Beremiz: " + sobrante.toFixed(0) + " camello(s)";
+        }
+
+        // Lógica Ejercicio 6 (Libro)
+        function calcularPanes() {
+            let pA = parseFloat(document.getElementById("panesA").value);
+            let pB = parseFloat(document.getElementById("panesB").value);
+            let m = parseFloat(document.getElementById("monedas").value);
+
+            if (isNaN(pA) || isNaN(pB) || isNaN(m)) {
+                document.getElementById("resLibro2").innerText = "Ingrese valores numéricos válidos.";
+                return;
+            }
+
+            let totalPanes = pA + pB;
+            let porcion = totalPanes / 3;
+
+            let aporteA = pA - porcion;
+            let aporteB = pB - porcion;
+
+            let monedasA = (aporteA / porcion) * (m / 3);
+            let monedasB = (aporteB / porcion) * (m / 3);
+
+            document.getElementById("resLibro2").innerHTML = 
+                "• Consumo por persona: " + porcion.toFixed(0) + " panes.<br>" +
+                "• Aporte neto del viajero 1: " + aporteA.toFixed(0) + " panes.<br>" +
+                "• Aporte neto del viajero 2: " + aporteB.toFixed(0) + " panes.<br>" +
+                "• Pago justo: " + monedasA.toFixed(0) + " monedas para el viajero 1 y " + monedasB.toFixed(0) + " moneda(s) para el viajero 2.";
+        }
+    </script>
+</body>
+</html>
